@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Atif Mulla — Frontend Developer</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="cursor"></div>
+
+  <header class="nav-wrap">
+    <nav class="nav container">
+      <a class="logo" href="#home">Atif Mulla</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+      
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="btn" id="download-resume" href="Atif Resume.pdf" download>Resume</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="toggle menu">☰</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="hero-inner container">
+        <div class="hero-text">
+          <h1 class="reveal">Hi, I'm <span class="accent">Atif Mulla </span>.</h1>
+          <p class="reveal delay-1">Full Stack Developer | Cyber Security Enthusiast</p>
+          <div class="hero-actions reveal delay-2">
+            <a class="cta" href="#projects">See work</a>&nbsp;
+            <a class="ghost" href="#contact">Get in touch</a>
+          </div>
+        </div>
+
+        <div class="hero-card reveal delay-3">
+          <div class="blob">
+            <svg viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+              <g transform="translate(300,300)">
+                <path id="blob" d="" />
+              </g>
+            </svg>
+          </div>
+
+          <div class="profile">
+            <img src="assets/Atif_Mulla.jpg" alt="Atif Mulla" />
+            <div class="profile-bio">
+              <h3>Atif Mulla</h3>
+              <p>A Full Stack Developer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-wave"></div>
+    </section>
+
+   <!-- About -->
+    <section id="about" class="section container">
+        <h2 class="section-title reveal">About Me</h2>
+        <div class="about-grid">
+          <div class="about-left reveal delay-1">
+            <p>
+                <strong> Full Stack Developer </strong>and <strong>DevOps </strong> enthusiast with hands-on experience in building scalable, secure, and high-performance web applications. Skilled 
+                in designing and deploying cloud-native solutions using <strong>AWS </strong> and  <strong>CI/CD pipelines</strong>. Adept in modern frontend frameworks (React, Next.js) and 
+                backend technologies like <strong>Node.js, Express.js, MySQL, PostgreSQL</strong>. Experienced with containerization (Docker). Passionate about automation, 
+                performance optimization, and delivering reliable full-stack solutions from concept to deployment. 
+            </p>
+            <p>
+              I enjoy blending design thinking with front-end development to create products that not only look good but also feel intuitive and perform seamlessly across devices.
+            </p>
+            <ul class="highlights">
+                <li>Full Stack Web Development (Frontend & Backend)</li>
+                <li>Cloud Deployment & CI/CD Automation (AWS, GitHub Actions)</li>
+                <li>Backend Development using Node.js, Express.js</li>
+                <li>Database Management with MySQL & PostgreSQL</li>
+                <li>Containerization & Orchestration using Docker</li>
+                <li>Performance Optimization & Secure Web Architecture</li>
+          </div>
+      
+          <div class="about-right reveal delay-2">
+            <div class="skill-pill">Frontend Development</div>
+            <div class="skill-pill">Backend Development</div>
+            <div class="skill-pill">DevOps</div>
+            <div class="skill-pill">Testing </div>
+          </div>
+        </div>
+      </section>
+      
+      <!--Education -->
+      <section id="education" class="section container education-section">
+        <h2 class="section-title reveal">Education</h2>
+      
+        <div class="edu-timeline reveal delay-1">
+      
+          <!-- Item 1 -->
+          <div class="edu-card">
+            <div class="edu-year">2021 - 2025</div>
+            <div class="edu-content">
+              <h3>Bachelor of Technology in Artificial Intelligence and Data Science</h3>
+              <p><strong>Angadi Institute of Technology and Managemnet, Belagavi</strong></p>
+              <p>Graduated with strong foundation in software development, data structures, and web technologies. Actively contributed to academic projects and research.</p>
+            </div>
+          </div>
+      
+          <!-- Item 2 -->
+          <div class="edu-card">
+            <div class="edu-year">2019 - 2021</div>
+            <div class="edu-content">
+              <h3>Higher Secondary Education (12th Grade)</h3>
+              <p><strong>Ajara Mahavidyalaya, Ajara, Kolhapur</strong></p>
+              <p>Specialized in Science stream with focus on Mathematics, Physics, and Computer Science.</p>
+            </div>
+          </div>
+      
+          <!-- Item 3 -->
+          <div class="edu-card">
+            <div class="edu-year">2017 - 2019</div>
+            <div class="edu-content">
+              <h3>Secondary Education (10th Grade)</h3>
+              <p><strong>Ajara High School, Ajara, Kolhapur </strong></p>
+              <p>Completed foundational studies with distinction and a strong interest in technology and innovation.</p>
+            </div>
+          </div>
+      
+        </div>
+      </section>
+      
+    
+    <!-- PROJECTS -->
+    <section id="projects" class="section container">
+        <h2 class="section-title reveal">Projects</h2>
+  
+        <div class="filters reveal delay-1">
+          <button data-filter="all" class="active">All</button>
+          <button data-filter="web">Web </button>
+          <button data-filter="ml">Machine Learning</button>
+        </div>
+  
+        <div class="projects-grid" id="projects-grid">
+          <!-- Card (repeat) -->
+          <article class="project-card" data-tags="ml">
+            <figure>
+              <img src="assets/project1.png" alt="Project 1" />
+              <figcaption>
+                <h3>Foot Ulcer Detection</h3>
+                <p class="muted">Python | OpenCV | scikit-learn | NumPy, Pandas | Matplotlib, Seaborn</p>
+              </figcaption>
+            </figure>
+            <div class="card-actions">
+              <a href="https://github.com/Atif-pixel" class="btn-small">View Code </a>
+            </div>
+          </article>
+  
+          <article class="project-card" data-tags="web">
+              <figure>
+                <img src="assets/project2.png" alt="Project 2" />
+                <figcaption>
+                  <h3>Website Development for Verdanova Industries Pvt. Ltd. </h3>
+                  <p class="muted">HTML | CSS | JS</p>
+                </figcaption>
+              </figure>
+              <div class="card-actions">
+                  <a href="https://github.com/Atif-pixel" class="btn-small">View Code </a>
+              </div>
+            </article>
+  
+            <article class="project-card" data-tags="ml">
+              <figure>
+                <img src="assets/project3.jpg" alt="Project 3" />
+                <figcaption>
+                  <h3>DeepFace Detection </h3>
+                  <p class="muted">Python | OpenCV | NumPy | Facenet | PyTorch | TensorFlow | Keras</p>
+                </figcaption>
+              </figure>
+              <div class="card-actions">
+                <a href="https://github.com/Atif-pixel" class="btn-small">View Code </a>
+              </div>
+            </article>
+            
+          <!-- add more cards -->
+        </div>
+      </section>
+
+      <section id="skills" class="section container">
+        <h2 class="section-title reveal">Technical Skills</h2>
+      
+        <!-- Buttons for Categories -->
+        <div class="tech-filters reveal delay-1">
+          <button class="tech-btn active" data-category="all">All</button>
+          <button class="tech-btn" data-category="frontend">Frontend</button>
+          <button class="tech-btn" data-category="backend">Backend</button>
+          <button class="tech-btn" data-category="frameworks">Frameworks</button>
+          <button class="tech-btn" data-category="databases">Databases</button>
+          <button class="tech-btn" data-category="tools">Tools</button>
+          <button class="tech-btn" data-category="testing">Testing</button>
+        </div><br>
+      
+        <!-- Tech Categories -->
+        <div class="tech-grid reveal delay-2">
+          <!-- FRONTEND -->
+          <div class="tech-card" data-category="frontend">
+            <h3>Frontend</h3>
+            <div class="tech-list">
+              <span>HTML5</span>
+              <span>CSS3</span>
+              <span>JavaScript </span>
+              <span>React.js</span>
+              <span>Next.js</span>
+              <span>Tailwind CSS</span>
+            </div>
+          </div>
+      
+          <!-- BACKEND -->
+          <div class="tech-card" data-category="backend">
+            <h3>Backend</h3>
+            <div class="tech-list">
+              <span>Node.js</span>
+              <span>Express.js</span>
+              <span>RESTful APIs</span>
+              <span>Authentication (JWT/OAuth)</span>
+            </div>
+          </div>
+      
+          <!-- FRAMEWORKS -->
+          <div class="tech-card" data-category="frameworks">
+            <h3>Frameworks</h3>
+            <div class="tech-list">
+              <span>React.js</span>
+              <span>Next.js</span>
+              <span>Tailwind CSS</span>
+            </div>
+          </div>
+      
+          <!-- DATABASES -->
+          <div class="tech-card" data-category="databases">
+            <h3>Databases</h3>
+            <div class="tech-list">
+              <span>MySQL</span>
+              <span>PostgreSQL</span>
+              <span>MongoDB</span>
+            </div>
+          </div>
+      
+          <!-- TOOLS -->
+          <div class="tech-card" data-category="tools">
+            <h3>Tools & DevOps</h3>
+            <div class="tech-list">
+              <span>Git / GitHub</span>
+              <span>Docker</span>
+              <span>AWS</span>
+              <span>CI/CD Pipelines</span>
+              <span>VS Code</span>
+              <span>Postman</span>
+            </div>
+          </div>
+      
+          <!-- TESTING -->
+          <div class="tech-card" data-category="testing">
+            <h3>Testing</h3>
+            <div class="tech-list">
+              <span>Unit Testing</span>
+              <span>Integration Testing</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+
+    <!-- CONTACT -->
+    <section id="contact" class="section container">
+      <h2 class="section-title reveal">Contact</h2>
+      <div class="contact-grid">
+        <form id="contact-form" class="contact-form reveal delay-1">
+          <label>
+            <input name="name" placeholder="Your name" required />
+          </label>
+          <label>
+            <input name="email" type="email" placeholder="your@email.com" required />
+          </label>
+          <label>
+            <textarea name="message" placeholder="Tell me about the project..." required></textarea>
+          </label>
+          <button type="submit" class="btn">Send message</button>
+        </form>
+        <div class="contact-info reveal delay-2">
+          <p>Or email me at <a href="mailto:you@example.com">atifmulla9695@gmail.com</a></p>
+          <p>Download resume: <a href="Atif Resume.pdf" download>PDF</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© <span id="year"></span> Atif Mulla</div>
+  </footer>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
