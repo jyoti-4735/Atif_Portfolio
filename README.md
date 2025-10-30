@@ -1,2 +1,2 @@
 # Atif_Portfolio
-Here is complete details about the projects, Education and skills 
+Here is complete details about me, projects, Education and skills 
