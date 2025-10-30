@@ -61,36 +61,55 @@
     </section>
 
    <!-- About -->
-    <section id="about" class="section container">
-        <h2 class="section-title reveal">About Me</h2>
-        <div class="about-grid">
-          <div class="about-left reveal delay-1">
-            <p>
-                <strong> Full Stack Developer </strong>and <strong>DevOps </strong> enthusiast with hands-on experience in building scalable, secure, and high-performance web applications. Skilled 
-                in designing and deploying cloud-native solutions using <strong>AWS </strong> and  <strong>CI/CD pipelines</strong>. Adept in modern frontend frameworks (React, Next.js) and 
-                backend technologies like <strong>Node.js, Express.js, MySQL, PostgreSQL</strong>. Experienced with containerization (Docker). Passionate about automation, 
-                performance optimization, and delivering reliable full-stack solutions from concept to deployment. 
-            </p>
-            <p>
-              I enjoy blending design thinking with front-end development to create products that not only look good but also feel intuitive and perform seamlessly across devices.
-            </p>
-            <ul class="highlights">
-                <li>Full Stack Web Development (Frontend & Backend)</li>
-                <li>Cloud Deployment & CI/CD Automation (AWS, GitHub Actions)</li>
-                <li>Backend Development using Node.js, Express.js</li>
-                <li>Database Management with MySQL & PostgreSQL</li>
-                <li>Containerization & Orchestration using Docker</li>
-                <li>Performance Optimization & Secure Web Architecture</li>
+   <section id="about" class="section container about-code-wrapper">
+    <h2 class="section-title reveal">About</h2>
+  
+    <div class="about-grid about-code-theme reveal delay-1">
+  
+      <!-- LEFT: Code Editor / Terminal style -->
+      <div class="editor-panel">
+        <div class="editor-toolbar">
+          <div class="dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
           </div>
-      
-          <div class="about-right reveal delay-2">
-            <div class="skill-pill">Frontend Development</div>
-            <div class="skill-pill">Backend Development</div>
-            <div class="skill-pill">DevOps</div>
-            <div class="skill-pill">Testing </div>
+          <div class="editor-actions">
+            <button id="play-typed" class="small-btn" aria-label="Play typing">▶</button>
+            <button id="pause-typed" class="small-btn" aria-label="Pause typing">⏸</button>
+            <button id="toggle-view" class="small-btn" aria-label="Toggle view">View</button>
           </div>
         </div>
-      </section>
+  
+        <div class="editor-body">
+          <pre id="code" class="code-block" aria-live="polite" tabindex="0"></pre>
+          <div class="line-numbers" id="lineNumbers" aria-hidden="true"></div>
+        </div>
+      </div>
+  
+      <!-- RIGHT: Readable Profile Card -->
+      <aside class="profile-panel">
+        <div class="profile-card">
+          <img src="assets/Atif_Mulla.jpg" alt="Atif Mulla" />
+          <h3>Atif Mulla</h3>
+          <p class="muted">
+            Full Stack Developer & DevOps enthusiast. I build scalable, secure web applications, deploy cloud-native solutions on AWS,
+            and automate delivery with CI/CD. Passionate about performance optimization, containerization (Docker) and reliable systems.
+          </p>
+  
+          <ul class="edu-highlights">
+            <li><strong>Frontend:</strong> HTML, CSS, JavaScript, React, Next.js</li>
+            <li><strong>Backend:</strong> Node.js, Express</li>
+            <li><strong>Databases:</strong> MySQL, PostgreSQL</li>
+            <li><strong>DevOps:</strong> Docker, AWS, CI/CD</li>
+          </ul>
+  
+          <a class="btn" href="#contact">Contact Me</a>
+        </div>
+      </aside>
+  
+    </div>
+  </section>
       
       <!--Education -->
       <section id="education" class="section container education-section">

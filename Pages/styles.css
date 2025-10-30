@@ -240,21 +240,124 @@ body {
 }
 
 
-
-/* ABOUT / SKILLS */
-.about-grid {
-    display: grid;
-    grid-template-columns: 1fr 320px;
-    gap: 1.2rem
+/* ===== CODE-EDITOR / ABOUT THEME ===== */
+.about-code-wrapper .about-code-theme {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 1.6rem;
+  align-items: start;
+  background: linear-gradient(180deg, rgba(6,7,12,0.45), rgba(6,8,12,0.6));
+  padding: 1.2rem;
+  border-radius: 16px;
+  position: relative;
+  overflow: hidden;
 }
 
-.skill-pill {
-    display: inline-block;
-    padding: .5rem .8rem;
-    border-radius: 999px;
-    background: var(--glass);
-    margin: .4rem
+/* Editor toolbar */
+.editor-panel {
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  position: relative;
+  z-index: 1;
 }
+
+.editor-toolbar {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:0.5rem 0.6rem;
+}
+
+.dots { display:flex; gap:6px; align-items:center; }
+.dot { width:10px; height:10px; border-radius:50%; display:inline-block; opacity:0.95; box-shadow:0 4px 12px rgba(0,0,0,0.6); }
+.dot.red{ background:#FF5F56 } .dot.yellow{ background:#FFBD2E } .dot.green{ background:#27C93F }
+
+.editor-actions { display:flex; gap:.4rem; }
+.small-btn {
+  background: rgba(255,255,255,0.03);
+  color: #cfe7ff;
+  border: none;
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight:600;
+}
+.small-btn:hover { background: rgba(255,255,255,0.06); }
+
+/* Editor body */
+.editor-body {
+  display:flex;
+  position:relative;
+  border-radius: 12px;
+  overflow:hidden;
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: inset 0 2px 20px rgba(17,24,39,0.6);
+  min-height: 300px;
+  background: linear-gradient(180deg, rgba(8,12,20,0.7), rgba(3,6,12,0.8));
+}
+
+/* line numbers column */
+.line-numbers {
+  background: linear-gradient(90deg, rgba(255,255,255,0.02), transparent);
+  padding: 1rem 0.6rem;
+  color: rgba(160,190,255,0.35);
+  font-family: 'Source Code Pro', monospace;
+  font-size: 13px;
+  text-align: right;
+  user-select:none;
+  min-width:48px;
+}
+
+/* code block */
+.code-block {
+  padding: 1rem 1.2rem;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #cfe7ff;
+  flex:1;
+  outline:none;
+}
+
+/* Syntax-like token colors (adjust to taste) */
+.token.keyword { color:#ff7ab6; font-weight:700; }
+.token.type { color:#7dd3fc; }
+.token.fn { color:#ffd580; }
+.token.string { color:#b8f0a1; }
+.token.comment { color: rgba(200,220,255,0.35); font-style:italic; }
+
+/* Profile panel (right) */
+.profile-panel { display:flex; align-items:flex-start; justify-content:center; }
+.profile-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  padding: 1.2rem;
+  border-radius: 12px;
+  width:100%;
+  text-align:left;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+}
+.profile-card img { width:72px; height:72px; border-radius:10px; object-fit:cover; display:block; margin-bottom:.6rem; }
+.profile-card h3 { margin:0 0 .4rem; color:#fff; }
+.profile-card .muted { color:var(--muted); margin-bottom:.8rem; }
+.edu-highlights { list-style:none; padding:0; margin:.6rem 0; color:var(--muted); }
+.edu-highlights li { margin-bottom:.45rem; font-size:.95rem; }
+
+/* Toggle / View modes */
+.about-readable { display:none; } /* when toggled to readable summary we can show formatted text if desired */
+
+/* Responsive */
+@media (max-width: 960px) {
+  .about-code-theme { grid-template-columns: 1fr; }
+  .profile-panel { order: 2; }
+  .editor-panel { order: 1; }
+  .editor-body { min-height:240px; }
+  .line-numbers { display:none; }
+}
+
 
 /* ===== EDUCATION SECTION ===== */
 .education-section {

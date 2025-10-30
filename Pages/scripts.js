@@ -132,3 +132,144 @@ techButtons.forEach(btn => {
         });
     });
 });
+
+(function () {
+    const codeEl = document.getElementById('code');
+    const lineNumbers = document.getElementById('lineNumbers');
+    const playBtn = document.getElementById('play-typed');
+    const pauseBtn = document.getElementById('pause-typed');
+    const toggleView = document.getElementById('toggle-view');
+
+    // Lines to "type" (you can edit these to reflect your resume content)
+    const lines = [
+        `// About me - Full Stack & DevOps`,
+        `const name = "Atif Mulla";`,
+        `const role = "Full Stack Developer & DevOps Enthusiast";`,
+        `const tech = ["HTML","CSS","JavaScript","React","Node.js","Express","MySQL","Postgres","Docker","AWS","CI/CD"];`,
+        `function summary(){`,
+        `  return \`I build scalable, secure web apps, design CI/CD pipelines, and optimize reliable deployments.\`;`,
+        `}`,
+        `// Education`,
+        `// 2021-2025 - B.E in Computer Science - Angadi Institute of Technology and Management`,
+        `// Interests: Automation, Performance, UX & Motion Design`
+    ];
+
+    // Typing controls
+    let currentLine = 0;
+    let charIndex = 0;
+    let typing = true;
+    let paused = false;
+    let typingSpeed = 16; // ms per char (increase -> faster)
+
+    function renderLineNumbers(count) {
+        const nums = Array.from({ length: count }, (_, i) => (i + 1)).join('\n');
+        lineNumbers.textContent = nums;
+    }
+
+    function updateCodeDisplay() {
+        codeEl.textContent = lines.slice(0, currentLine).join('\n') + (currentLine < lines.length ? '\n' + lines[currentLine].slice(0, charIndex) : '');
+        renderLineNumbers(currentLine + 1);
+    }
+
+    function syntaxHighlight(raw) {
+        // very small token-based highlight using regex
+        // order matters — strings first
+        let html = raw
+            .replace(/(\/\/.*?$)/gm, '<span class="token comment">$1</span>')             // comments
+            .replace(/"([^"]*)"/g, '<span class="token string">"$1"</span>')             // strings
+            .replace(/\b(const|let|var|function|return|new|if|else)\b/g, '<span class="token keyword">$1</span>')
+            .replace(/\b([A-Za-z_]\w*)(?=\s*\()/g, '<span class="token fn">$1</span>')   // function names
+            .replace(/\b([A-Z][A-Za-z0-9_]+)\b/g, '<span class="token type">$1</span>'); // types / classes
+
+        // replace special chars for HTML
+        html = html.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        // but above replace would break spans, so we apply HTML escaping first, then do token wrap differently:
+        // simpler approach: rebuild by lines and highlight only using innerHTML carefully
+        return html;
+    }
+
+    // A safer highlighting approach: convert text to escaped, then apply simple replacements
+    function highlightAndRender(fullText) {
+        // escape HTML
+        const esc = fullText.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        // apply token regex on escaped text
+        let out = esc
+            .replace(/(\/\/.*?$)/gm, '<span class="token comment">$1</span>')
+            .replace(/"([^"]*)"/g, '<span class="token string">"$1"</span>')
+            .replace(/\b(const|let|var|function|return|new|if|else)\b/g, '<span class="token keyword">$1</span>')
+            .replace(/\b([A-Za-z_]\w*)(?=\s*\()/g, '<span class="token fn">$1</span>')
+            .replace(/\b([A-Z][A-Za-z0-9_]+)\b/g, '<span class="token type">$1</span>');
+        codeEl.innerHTML = out;
+    }
+
+    function typeStep() {
+        if (paused) return;
+        if (currentLine >= lines.length) {
+            // finished typing — apply highlight and stop
+            highlightAndRender(lines.join('\n'));
+            return;
+        }
+        if (charIndex < lines[currentLine].length) {
+            charIndex++;
+            updateCodeDisplay();
+            setTimeout(typeStep, typingSpeed);
+        } else {
+            // move to next line
+            currentLine++;
+            charIndex = 0;
+            updateCodeDisplay();
+            setTimeout(typeStep, typingSpeed + 60);
+        }
+    }
+
+    function startTyping() {
+        paused = false;
+        if (currentLine >= lines.length) {
+            // restart
+            currentLine = 0; charIndex = 0;
+            codeEl.textContent = '';
+        }
+        typeStep();
+    }
+
+    function pauseTyping() {
+        paused = true;
+    }
+
+    // Buttons
+    playBtn.addEventListener('click', () => { startTyping(); });
+    pauseBtn.addEventListener('click', () => { pauseTyping(); });
+
+    // Toggle view: make readable formatted summary or editor
+    let viewMode = 'editor';
+    toggleView.addEventListener('click', () => {
+        if (viewMode === 'editor') {
+            // show readable summary in the right panel (or replace code with formatted text)
+            codeEl.innerHTML = `<div style="color:var(--muted);font-family:inherit;">
+          <strong>Your Name</strong><br/>
+          Full Stack Developer & DevOps Enthusiast — builds scalable cloud-native apps and CI/CD pipelines.
+        </div>`;
+            viewMode = 'read';
+            toggleView.textContent = 'Code';
+        } else {
+            // restore typed editor content (highlighted)
+            highlightAndRender(lines.join('\n'));
+            viewMode = 'editor';
+            toggleView.textContent = 'View';
+        }
+    });
+
+    // initialize line numbers and start typing automatically
+    renderLineNumbers(1);
+    startTyping();
+
+    // allow keyboard play/pause (space toggles)
+    document.addEventListener('keydown', (e) => {
+        if (e.code === 'Space' && document.activeElement !== codeEl) {
+            e.preventDefault();
+            paused = !paused;
+            if (!paused) typeStep();
+        }
+    });
+
+})();
